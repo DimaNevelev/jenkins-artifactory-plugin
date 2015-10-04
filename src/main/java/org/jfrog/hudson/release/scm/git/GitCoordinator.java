@@ -88,6 +88,8 @@ public class GitCoordinator extends AbstractScmCoordinator {
             // push the current branch
             scmManager.push(scmManager.getRemoteConfig(releaseAction.getTargetRemoteName()), state.currentWorkingBranch);
             state.releaseBranchPushed = true;
+        } else if (releaseAction.isCreateVcsTag()){
+            log( "No changes were made in the project, the tag won't be pushed");
         }
     }
 
