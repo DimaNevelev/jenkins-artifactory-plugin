@@ -77,7 +77,7 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
     Boolean pro;
     boolean createVcsTag;
     String tagUrl;
-    String tagComment;
+    String releaseCommitComment;
     String nextDevelCommitComment;
     String stagingRepositoryKey;
     String stagingComment;
@@ -184,8 +184,8 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
         return tagUrl;
     }
 
-    public String getTagComment() {
-        return StringUtils.isNotBlank(tagComment) ? tagComment : getDefaultVcsConfig().getTagComment();
+    public String getReleaseCommitComment() {
+        return StringUtils.isNotBlank(releaseCommitComment) ? releaseCommitComment : getDefaultVcsConfig().getReleaseCommitComment();
     }
 
     public String getNextDevelCommitComment() {
@@ -313,8 +313,8 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
         if (req.getParameter("tagUrl") != null) {
             tagUrl = req.getParameter("tagUrl");
         }
-        if (req.getParameter("tagComment") != null) {
-            tagComment = req.getParameter("tagComment");
+        if (req.getParameter("releaseCommitComment") != null) {
+            releaseCommitComment = req.getParameter("releaseCommitComment");
         }
         if (req.getParameter("createReleaseBranch") != null) {
             createReleaseBranch = Boolean.valueOf(req.getParameter("createReleaseBranch"));
@@ -349,8 +349,8 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
         createVcsTag = req.getParameter("createVcsTag") != null;
         if (createVcsTag) {
             tagUrl = req.getParameter("tagUrl");
-            tagComment = req.getParameter("tagComment");
         }
+        releaseCommitComment = req.getParameter("releaseCommitComment");
         nextDevelCommitComment = req.getParameter("nextDevelCommitComment");
         createReleaseBranch = req.getParameter("createReleaseBranch") != null;
         if (createReleaseBranch) {
@@ -478,7 +478,7 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
 
         createVcsTag = defaultVcsConfig.isCreateTag();
         tagUrl = defaultVcsConfig.getTagUrlOrName();
-        tagComment = defaultVcsConfig.getTagComment();
+        releaseCommitComment = defaultVcsConfig.getReleaseCommitComment();
         nextDevelCommitComment = defaultVcsConfig.getNextDevelopmentVersionComment();
         createReleaseBranch = defaultVcsConfig.isUseReleaseBranch();
         releaseBranch = defaultVcsConfig.getReleaseBranchName();
@@ -552,7 +552,7 @@ public abstract class ReleaseAction<P extends AbstractProject & BuildableItem,
                         getStagingConfigAsString(vcsConfig, "releaseBranchName"),
                         ((Boolean) vcsConfig.get("createTag")),
                         getStagingConfigAsString(vcsConfig, "tagUrlOrName"),
-                        getStagingConfigAsString(vcsConfig, "tagComment"),
+                        getStagingConfigAsString(vcsConfig, "releaseCommitComment"),
                         getStagingConfigAsString(vcsConfig, "nextDevelopmentVersionComment"));
             }
         }

@@ -69,7 +69,7 @@ public class PerforceCoordinator extends AbstractScmCoordinator {
 
         if (releaseAction.isCreateVcsTag()) {
             log("Creating label: '" + releaseAction.getTagUrl() + "' with change list id: " + labelChangeListId);
-            perforce.createTag(releaseAction.getTagUrl(), releaseAction.getTagComment(), labelChangeListId);
+            perforce.createTag(releaseAction.getTagUrl(), releaseAction.getReleaseCommitComment(), labelChangeListId);
             tagCreated = true;
         }
     }

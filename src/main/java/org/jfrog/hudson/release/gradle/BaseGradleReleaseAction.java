@@ -284,7 +284,7 @@ public abstract class BaseGradleReleaseAction extends ReleaseAction<AbstractProj
         String defaultReleaseBranch = getDefaultReleaseBranch();
         String defaultTagUrl = getDefaultTagUrl();
         defaultVcsConfig = new VcsConfig(StringUtils.isNotBlank(defaultReleaseBranch), defaultReleaseBranch,
-                StringUtils.isNotBlank(defaultTagUrl), defaultTagUrl, getDefaultTagComment(),
+                StringUtils.isNotBlank(defaultTagUrl), defaultTagUrl, getDefaultReleaseCommitComment(),
                 getDefaultNextDevelCommitMessage());
     }
 
@@ -308,7 +308,7 @@ public abstract class BaseGradleReleaseAction extends ReleaseAction<AbstractProj
         return new StringBuilder(getBaseTagUrlAccordingToScm(baseTagUrl)).append(getFirstReleaseVersion()).toString();
     }
 
-    private String getDefaultTagComment() {
+    private String getDefaultReleaseCommitComment() {
         return new StringBuilder(SubversionManager.COMMENT_PREFIX).append("Release version ")
                 .append(getFirstReleaseVersion()).toString();
     }

@@ -11,16 +11,16 @@ public class VcsConfig implements Serializable {
     private String releaseBranchName;
     private boolean createTag;
     private String tagUrlOrName;
-    private String tagComment;
+    private String releaseCommitComment;
     private String nextDevelopmentVersionComment;
 
     public VcsConfig(boolean useReleaseBranch, String releaseBranchName, boolean createTag, String tagUrlOrName,
-            String tagComment, String nextDevelopmentVersionComment) {
+            String releaseCommitComment, String nextDevelopmentVersionComment) {
         this.useReleaseBranch = useReleaseBranch;
         this.releaseBranchName = releaseBranchName;
         this.createTag = createTag;
         this.tagUrlOrName = tagUrlOrName;
-        this.tagComment = tagComment;
+        this.releaseCommitComment = releaseCommitComment;
         this.nextDevelopmentVersionComment = nextDevelopmentVersionComment;
     }
 
@@ -40,8 +40,8 @@ public class VcsConfig implements Serializable {
         return tagUrlOrName;
     }
 
-    public String getTagComment() {
-        return tagComment;
+    public String getReleaseCommitComment() {
+        return releaseCommitComment;
     }
 
     public String getNextDevelopmentVersionComment() {

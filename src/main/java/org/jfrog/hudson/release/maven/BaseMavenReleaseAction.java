@@ -190,7 +190,7 @@ public abstract class BaseMavenReleaseAction extends ReleaseAction<MavenModuleSe
         String defaultReleaseBranch = getDefaultReleaseBranch();
         String defaultTagUrl = getDefaultTagUrl();
         defaultVcsConfig = new VcsConfig(StringUtils.isNotBlank(defaultReleaseBranch), defaultReleaseBranch,
-                StringUtils.isNotBlank(defaultTagUrl), defaultTagUrl, getDefaultTagComment(),
+                StringUtils.isNotBlank(defaultTagUrl), defaultTagUrl, getDefaultReleaseCommitComment(),
                 getDefaultNextDevelCommitMessage());
     }
 
@@ -233,7 +233,7 @@ public abstract class BaseMavenReleaseAction extends ReleaseAction<MavenModuleSe
         return getWrapper().getTargetRemoteName();
     }
 
-    private String getDefaultTagComment() {
+    private String getDefaultReleaseCommitComment() {
         return SubversionManager.COMMENT_PREFIX + "Release version " + getDefaultReleaseVersion();
     }
 

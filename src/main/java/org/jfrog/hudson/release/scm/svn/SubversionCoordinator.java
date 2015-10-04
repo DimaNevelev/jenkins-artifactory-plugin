@@ -46,7 +46,7 @@ public class SubversionCoordinator extends AbstractScmCoordinator {
 
     public void afterSuccessfulReleaseVersionBuild() throws InterruptedException, IOException {
         if (releaseAction.isCreateVcsTag()) {
-            scmManager.createTag(releaseAction.getTagUrl(), releaseAction.getTagComment());
+            scmManager.createTag(releaseAction.getTagUrl(), releaseAction.getReleaseCommitComment());
             tagCreated = true;
         }
     }
@@ -80,11 +80,11 @@ public class SubversionCoordinator extends AbstractScmCoordinator {
      *         the default message will be used.
      */
     private String getRevertTagMessage() {
-        String tagComment = releaseAction.getDefaultVcsConfig().getTagComment();
-        if (StringUtils.equals(releaseAction.getTagComment(), tagComment)) {
-            return tagComment;
+        String releaseCommitComment = releaseAction.getDefaultVcsConfig().getReleaseCommitComment();
+        if (StringUtils.equals(releaseAction.getReleaseCommitComment(), releaseCommitComment)) {
+            return releaseCommitComment;
         }
-        return SubversionManager.COMMENT_PREFIX + "Reverting: " + releaseAction.getTagComment();
+        return SubversionManager.COMMENT_PREFIX + "Reverting: " + releaseAction.getReleaseCommitComment();
     }
 
     public String getRemoteUrlForPom() {

@@ -54,12 +54,12 @@
                                      help="/plugin/artifactory/help/release/ReleaseAction/help-tagUrl.html">
                                 <f:textbox name="tagUrl" value="${it.defaultVcsConfig.tagUrlOrName}"/>
                             </f:entry>
-                            <f:entry title="${%Tag comment}" field="tagComment"
-                                     help="/plugin/artifactory/help/release/ReleaseAction/help-tagComment.html">
-                                <f:textarea rows="3" name="tagComment"
-                                            default="${it.defaultVcsConfig.tagComment}"/>
-                            </f:entry>
                         </f:optionalBlock>
+                        <f:entry title="${%Release Commit comment}" field="releaseCommitComment"
+                                 help="/plugin/artifactory/help/release/ReleaseAction/help-releaseCommitComment.html">
+                             <f:textarea rows="3" name="releaseCommitComment"
+                                        default="${it.defaultVcsConfig.releaseCommitComment}"/>
+                        </f:entry>
                         <f:entry title="${%Next development version comment}" field="nextDevelCommitComment"
                                  help="/plugin/artifactory/help/release/ReleaseAction/help-nextDevelopmentComment.html">
                             <f:textarea rows="3" name="nextDevelCommitComment"
